@@ -6,7 +6,7 @@ class Goblin(pl.Monsters):
     def __init__(self):
         super().__init__()
         self.name = "Gob"
-        self.type = "Goblin"
+        self.type = "goblin"
         self.max_hp = 20
         self.hp = self.max_hp
         # self.speed = rand.randint(5,10)

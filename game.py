@@ -33,11 +33,12 @@ class Game:
         while True:
             att_speed = attacker.speed + self.roll_dice(20)
             if att_speed > defender.armor_rating:
-                damage = attacker.attack()
+                damage = attacker.attack(self.roll_dice(6))
                 defender.hp -= damage
                 if defender.hp <= 0:
                     print(defender.name, "Died...")
                     return
+                print(attacker.name, "attack landed!", defender.name,"turn.")
             else:
                 print(attacker.name, "missed the attack!", defender.name,"turn.")
             attacker,defender = defender,attacker

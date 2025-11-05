@@ -14,9 +14,9 @@ class Alive_Entity:
     def speak(self):
         print("I am " + self.name + ".")
         
-    def attack(self):
-        damage = self.power + game.Game.roll_dice(self,6)
-        print("I got to attack take",damage)
+    def attack(self,roller,mult = 1):
+        damage = int((self.power + roller)*mult)
+        print(self.name,"got to attack, take",damage,"damage.")
         return damage 
         
 
@@ -41,8 +41,8 @@ class Monsters(Alive_Entity):
     def speak(self):
         print("I am " + self.type +" "+ self.name + ". And i'm ANGRY!")
 
-    def attack(self):
+    def attack(self,roller):
         dmg_mult = {'Sword':1,'Knife':0.5,'Axe':1.5}
-        damage = Alive_Entity.attack(self) * dmg_mult[self.weapon]
-        print("Doing",damage,"with my",self.weapon)
+        damage = Alive_Entity.attack(self,roller,mult = dmg_mult[self.weapon])
+        print("Doing",damage,"with my",self.weapon.lower()+"!")
         return damage 
